@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['./src/index.js'],
@@ -10,12 +11,21 @@ module.exports = {
           test: /\.js$/,
           exclude: /(node_modules)/,
           loader: 'babel-loader'
+        },
+        {
+          test: /\.css$/,
+          use: [ 'style-loader', 'css-loader' ]
         }
       ]
   },
   resolve: {
     extensions: [ '.js', '.json' ]
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      d3: 'd3'
+    })
+  ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
