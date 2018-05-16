@@ -5,16 +5,15 @@ import 'dc/dc.css';
 import SetChart from './components/set-chart';
 import FactionChart from './components/faction-chart';
 import TypeChart from './components/type-chart';
+import UnitTypeChart from './components/unit-type-chart';
 
 get('./eternal-cards.json').then(cards => {
-  cards = cards.map(card => {
-    card.Factions = Array.from(new Set(card.Influence.match(/{[FJPST]}/gi)));
-    return card;
-  });
+  cards.forEach(card => card.Factions = Array.from(new Set(card.Influence.match(/{[FJPST]}/gi))));
   let data = crossfilter(cards);
   let setChart = new SetChart(data, '#set-chart');
   let factionChart = new FactionChart(data, '#faction-chart');
   let typeChart = new TypeChart(data, '#type-chart');
+  let unitTypeChart = new UnitTypeChart(data, '#unit-type-chart');
 
   dc.renderAll();
 });
