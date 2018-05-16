@@ -15,7 +15,11 @@ export default class FactionChart {
         'Factionless'
       ])
       .domain(['{J}', '{P}', '{S}', '{F}', '{T}']);
-      this.legend = dc.legend().legendText(d => this.titles(d.name));
+    this.legend = dc.legend().legendText(d => this.titles(d.name));
+
+    this.legendOrdering = d3.scaleOrdinal()
+      .range(d3.range(this.titles.domain().length))
+      .domain(this.titles.domain());
 
     this.chart
       .dimension(this.dim)
@@ -25,5 +29,9 @@ export default class FactionChart {
       .legend(this.legend)
       .ordering(dc.pluck('key'))
       ;
+
+    dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
+      return this.legendOrdering(a.name) - this.legendOrdering(b.name);
+    }));
   }
 }

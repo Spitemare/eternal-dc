@@ -17,7 +17,7 @@ export default class SetChart {
         'Others'
       ])
       .domain([0, 1, 2, 3, 1001, 1002, 1003]);
-      this.legend = dc.legend().legendText(d => this.titles(d.name));
+    this.legend = dc.legend().legendText(d => this.titles(d.name));
 
     this.chart
       .dimension(this.dim)
@@ -27,5 +27,11 @@ export default class SetChart {
       .label(d => '')
       .legend(this.legend)
       ;
+
+      dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
+        if (a.name === 'Others') return 1;
+        if (b.name === 'Others') return -1;
+        return a.name - b.name;
+      }));
   }
 }
