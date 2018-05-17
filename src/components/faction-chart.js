@@ -15,7 +15,7 @@ export default class FactionChart {
         'Time',
         'Factionless'
       ])
-      .domain(['{J}', '{P}', '{S}', '{F}', '{T}', '{0}']);
+      .domain(['J', 'P', 'S', 'F', 'T', 'Z']);
     this.legend = dc.legend().legendText(d => this.titles(d.name));
 
     this.legendOrdering = d3.scaleOrdinal()

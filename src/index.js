@@ -14,8 +14,10 @@ get('./eternal-cards.json').then(cards => {
   dc.config.defaultColors(d3.schemeCategory10);
 
   cards.forEach(card => {
-    card.Factions = Array.from(new Set(card.Influence.match(/{[FJPST]}/gi)))
-    if (!Array.isArray(card.Factions) || !card.Factions.length) card.Factions.push('{0}');
+    let match = card.Influence.match(/{[FJPST]}/gi);
+    if (match) match = match.map(c => c.replace(/({|})/g, ''));
+    card.Factions = Array.from(new Set(match));
+    if (!Array.isArray(card.Factions) || !card.Factions.length) card.Factions.push('Z');
     card.FactionSort = card.Factions.join('');
   });
 
