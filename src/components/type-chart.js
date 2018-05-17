@@ -15,7 +15,6 @@ export default class TypeChart {
       .label(d => '')
       .legend(this.legend)
       .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
-      ;
 
     dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
       return a.name.localeCompare(b.name);

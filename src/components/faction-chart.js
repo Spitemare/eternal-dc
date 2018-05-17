@@ -15,11 +15,15 @@ export default class FactionChart {
         'Time',
         'Factionless'
       ])
-      .domain(['{J}', '{P}', '{S}', '{F}', '{T}']);
+      .domain(['{J}', '{P}', '{S}', '{F}', '{T}', '{0}']);
     this.legend = dc.legend().legendText(d => this.titles(d.name));
 
     this.legendOrdering = d3.scaleOrdinal()
       .range(d3.range(this.titles.domain().length))
+      .domain(this.titles.domain());
+
+    this.colors = d3.scaleOrdinal()
+      .range(['#1E8449', '#1F618D', '#7D3C98', '#C0392B', '#D4AC0D', '#5D6D7E'])
       .domain(this.titles.domain());
 
     this.chart
@@ -28,9 +32,9 @@ export default class FactionChart {
       .title(d => this.titles(d.key) + ': ' + d.value)
       .label(d => '')
       .legend(this.legend)
+      .colors(this.colors)
       .ordering(dc.pluck('key'))
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
-      ;
+      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));;
 
     dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
       return this.legendOrdering(a.name) - this.legendOrdering(b.name);

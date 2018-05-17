@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: ['./src/index.js'],
-  devtool: 'inline-source-map',
+  devtool: process.env.WEBPACK_SERVE ? 'inline-source-map' : false,
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
   module: {
     rules: [
@@ -29,10 +29,5 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
-  },
-  serve: {
-    dev: {
-      outputPath: path.resolve(__dirname, 'dist')
-    }
   }
 };

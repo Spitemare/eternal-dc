@@ -23,8 +23,7 @@ export default class UnitTypeChart {
       .width(800)
       .title(d => d.key + ': ' + d.value)
       .xUnits(dc.units.ordinal)
-      .elasticY(true)
-      ;
+      .elasticY(true);
     this.chart.margins().bottom = 50;
     sort.call(this);
 
