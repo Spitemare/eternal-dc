@@ -2,8 +2,6 @@ import 'd3';
 import dc from 'dc';
 import EventBus from '../utils/event-bus';
 
-import './unit-type-chart.css';
-
 function sort() {
   let domain = this.chart.group().all()
     .filter(d => d.value > 0)

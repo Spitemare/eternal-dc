@@ -3,13 +3,20 @@
     <head>
         <meta charset="UTF-8" />
         <title>Eternal Charts</title>
+        <style>
+          #unit-type-chart .x.axis text {
+            text-anchor: end !important;
+            transform: rotate(-45deg);
+          }
+        </style>
     </head>
     <body>
         <!-- Main -->
         <div id="set-chart"></div>
         <div id="faction-chart"></div>
         <div id="type-chart"></div>
-        <div id="unit-type-chart" class="unit-type-chart"></div>
+        <div id="rarity-chart"></div>
+        <div id="unit-type-chart"></div>
         <div id="cost-chart"></div>
         <div id="image-chart"></div>
         <script src="./dist/bundle.js"></script>
