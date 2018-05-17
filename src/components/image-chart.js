@@ -13,7 +13,7 @@ export default class ImageChart {
       .size(Infinity)
       .html(d => '<img class="lazy" data-src="' + d.ImageUrl + '"></img>')
       .htmlGroup(null)
-      .order(Comparators.comparing('Factions').thenComparing('Cost').thenComparing('Name'))
+      .order(Comparators.comparing(d => d.FactionSort.length).thenComparing('FactionSort').thenComparing('Cost').thenComparing('Name'))
       .on('renderlet', () => this.lazy.update());
 
       this.lazy = new LazyLoad();

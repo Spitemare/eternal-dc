@@ -16,6 +16,7 @@ get('./eternal-cards.json').then(cards => {
   cards.forEach(card => {
     card.Factions = Array.from(new Set(card.Influence.match(/{[FJPST]}/gi)))
     if (!Array.isArray(card.Factions) || !card.Factions.length) card.Factions.push('{0}');
+    card.FactionSort = card.Factions.join('');
   });
 
   let data = crossfilter(cards);
