@@ -15,6 +15,10 @@ module.exports = {
         {
           test: /\.css$/,
           use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+          test: /node_modules[\\|/](comparators)/,
+          loader: 'umd-compat-loader'
         }
       ]
   },

@@ -6,6 +6,7 @@ import SetChart from './components/set-chart';
 import FactionChart from './components/faction-chart';
 import TypeChart from './components/type-chart';
 import UnitTypeChart from './components/unit-type-chart';
+import ImageChart from './components/image-chart';
 
 get('./eternal-cards.json').then(cards => {
   dc.config.defaultColors(d3.schemeCategory10);
@@ -14,11 +15,13 @@ get('./eternal-cards.json').then(cards => {
     card.Factions = Array.from(new Set(card.Influence.match(/{[FJPST]}/gi)))
     if (!Array.isArray(card.Factions) || !card.Factions.length) card.Factions.push('{0}');
   });
+
   let data = crossfilter(cards);
   let setChart = new SetChart(data, '#set-chart');
   let factionChart = new FactionChart(data, '#faction-chart');
   let typeChart = new TypeChart(data, '#type-chart');
   let unitTypeChart = new UnitTypeChart(data, '#unit-type-chart');
+  let imageChart = new ImageChart(data, '#image-chart');
 
   dc.renderAll();
 });

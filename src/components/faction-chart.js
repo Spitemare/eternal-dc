@@ -23,7 +23,7 @@ export default class FactionChart {
       .domain(this.titles.domain());
 
     this.colors = d3.scaleOrdinal()
-      .range(['#1E8449', '#1F618D', '#7D3C98', '#C0392B', '#D4AC0D', '#5D6D7E'])
+      .range(['#2ca02c', '#1f77b4', '#9467bd', '#d62728', '#ff7f0e', '#7f7f7f'])
       .domain(this.titles.domain());
 
     this.chart
