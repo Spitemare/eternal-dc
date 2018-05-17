@@ -22,7 +22,8 @@ export default class UnitTypeChart {
       .title(d => d.key + ': ' + d.value)
       .xUnits(dc.units.ordinal)
       .elasticY(true);
-    this.chart.margins().bottom = 50;
+    this.chart.margins().left = 35;
+    this.chart.margins().bottom = 55;
     sort.call(this);
 
     EventBus.on('chart.filter', sort.bind(this));
