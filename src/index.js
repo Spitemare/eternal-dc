@@ -6,6 +6,7 @@ import SetChart from './components/set-chart';
 import FactionChart from './components/faction-chart';
 import TypeChart from './components/type-chart';
 import UnitTypeChart from './components/unit-type-chart';
+import CostChart from './components/cost-chart';
 import ImageChart from './components/image-chart';
 
 get('./eternal-cards.json').then(cards => {
@@ -21,6 +22,7 @@ get('./eternal-cards.json').then(cards => {
   let factionChart = new FactionChart(data, '#faction-chart');
   let typeChart = new TypeChart(data, '#type-chart');
   let unitTypeChart = new UnitTypeChart(data, '#unit-type-chart');
+  let costChart = new CostChart(data, '#cost-chart');
   let imageChart = new ImageChart(data, '#image-chart');
 
   dc.renderAll();
