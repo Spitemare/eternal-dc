@@ -9,10 +9,13 @@
             transform: rotate(-45deg) translate(-1%, -2%);
           }
           .dc-grid-item {
-            float:left;
+            display: inline-block;
             margin:0 10px 10px 0;
             padding:5px;
             width:200px;
+          }
+          .dc-chart {
+            float: none !important;
           }
         </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.3/dc.min.css" integrity="sha256-KpMU+EtqJCR1enZLQofp/JAYFD/uua5B7fohf70JaEQ=" crossorigin="anonymous" />
@@ -23,17 +26,19 @@
         <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub">
       </a>
       <div class="container">
-        <div class="columns is-mobile">
-          <div id="set-chart" class="column is-half"></div>
-          <div id="faction-chart" class="column is-half"></div>
+        <div class="columns is-desktop">
+          <div id="set-chart" class="column"></div>
+          <div id="faction-chart" class="column"></div>
         </div>
-        <div class="columns is-mobile">
-          <div id="type-chart" class="column is-half"></div>
-          <div id="rarity-chart" class="column is-half"></div>
+        <div class="columns is-desktop">
+          <div id="type-chart" class="column"></div>
+          <div id="rarity-chart" class="column"></div>
         </div>
-        <div class="columns is-mobile">
-          <div id="unit-type-chart" class="column is-two-thirds-mobile"></div>
-          <div id="cost-chart" class="column is-one-third-mobile"></div>
+        <div class="columns">
+          <div id="unit-type-chart" class="column"></div>
+        </div>
+        <div class="columns">
+          <div id="cost-chart" class="column"></div>
         </div>
         <div id="image-chart"></div>
       </div>

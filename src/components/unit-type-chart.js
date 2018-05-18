@@ -18,7 +18,6 @@ export default class UnitTypeChart {
     this.chart
       .dimension(this.dim)
       .group(this.dim.group())
-      .width(800)
       .title(d => d.key + ': ' + d.value)
       .xUnits(dc.units.ordinal)
       .elasticY(true);
