@@ -1,16 +1,9 @@
 import get from './utils/get';
+import EventBus from './utils/event-bus';
 import crossfilter from 'crossfilter2';
 import dc from 'dc';
 import 'dc/dc.css';
-import SetChart from './components/set-chart';
-import FactionChart from './components/faction-chart';
-import TypeChart from './components/type-chart';
-import RarityChart from './components/rarity-chart';
-import UnitTypeChart from './components/unit-type-chart';
-import CostChart from './components/cost-chart';
-import AttackHealthChart from './components/attack-health-chart';
-import ImageChart from './components/image-chart';
-import EventBus from './utils/event-bus';
+import * as Charts from './components/charts';
 
 get('./eternal-cards.json').then(cards => {
   dc.config.defaultColors(d3.schemeCategory10);
@@ -25,17 +18,17 @@ get('./eternal-cards.json').then(cards => {
 
   let data = crossfilter(cards);
   data.onChange(function(e) {
-    if (e === 'filtered') EventBus.emit('chart.filter', {...arguments});
+    if (e === 'filtered') EventBus.emit('data.filtered', {...arguments});
   });
 
-  let setChart = new SetChart(data, '#set-chart');
-  let factionChart = new FactionChart(data, '#faction-chart');
-  let typeChart = new TypeChart(data, '#type-chart');
-  let rarityChart = new RarityChart(data, '#rarity-chart');
-  let unitTypeChart = new UnitTypeChart(data, '#unit-type-chart');
-  let costChart = new CostChart(data, '#cost-chart');
-  let imageChart = new ImageChart(data, '#image-chart');
-  let attackHealthChart = new AttackHealthChart(data, '#attack-health-chart');
+  let setChart = new Charts.SetChart(data, '#set-chart');
+  let factionChart = new Charts.FactionChart(data, '#faction-chart');
+  let typeChart = new Charts.TypeChart(data, '#type-chart');
+  let rarityChart = new Charts.RarityChart(data, '#rarity-chart');
+  let unitTypeChart = new Charts.UnitTypeChart(data, '#unit-type-chart');
+  let costChart = new Charts.CostChart(data, '#cost-chart');
+  let imageChart = new Charts.ImageChart(data, '#image-chart');
+  let attackHealthChart = new Charts.AttackHealthChart(data, '#attack-health-chart');
 
   document.getElementById('reset').onclick = () => {
     document.querySelector('#search>input').value = '';

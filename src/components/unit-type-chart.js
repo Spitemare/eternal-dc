@@ -25,6 +25,6 @@ export default class UnitTypeChart {
     this.chart.margins().bottom = 55;
     sort.call(this);
 
-    EventBus.on('chart.filter', sort.bind(this));
+    EventBus.on('data.filtered', sort.bind(this));
   }
 }
