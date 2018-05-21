@@ -1,6 +1,5 @@
 import 'd3';
 import dc from 'dc';
-import EventBus from '../utils/event-bus';
 
 export default class FactionChart {
   constructor(data, parent) {
@@ -33,8 +32,7 @@ export default class FactionChart {
       .label(d => '')
       .legend(this.legend)
       .colors(this.colors)
-      .ordering(dc.pluck('key'))
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
+      .ordering(dc.pluck('key'));
 
     dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
       return this.legendOrdering(a.name) - this.legendOrdering(b.name);

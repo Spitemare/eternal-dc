@@ -10,6 +10,7 @@ import UnitTypeChart from './components/unit-type-chart';
 import CostChart from './components/cost-chart';
 import AttackHealthChart from './components/attack-health-chart';
 import ImageChart from './components/image-chart';
+import EventBus from './utils/event-bus';
 
 get('./eternal-cards.json').then(cards => {
   dc.config.defaultColors(d3.schemeCategory10);
@@ -23,6 +24,10 @@ get('./eternal-cards.json').then(cards => {
   });
 
   let data = crossfilter(cards);
+  data.onChange(function(e) {
+    if (e === 'filtered') EventBus.emit('chart.filter', {...arguments});
+  });
+
   let setChart = new SetChart(data, '#set-chart');
   let factionChart = new FactionChart(data, '#faction-chart');
   let typeChart = new TypeChart(data, '#type-chart');

@@ -1,6 +1,5 @@
 import 'd3';
 import dc from 'dc';
-import EventBus from '../utils/event-bus';
 
 export default class SetChart {
   constructor(data, parent) {
@@ -24,8 +23,7 @@ export default class SetChart {
       .group(this.dim.group())
       .title(d => this.titles(d.key) + ': ' + d.value)
       .label(d => '')
-      .legend(this.legend)
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
+      .legend(this.legend);
 
       dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => a.name - b.name));
   }

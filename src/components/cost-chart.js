@@ -1,5 +1,4 @@
 import dc from 'dc';
-import EventBus from '../utils/event-bus';
 
 export default class CostChart {
   constructor(data, parent) {
@@ -12,7 +11,6 @@ export default class CostChart {
       .cap(7)
       .othersLabel('7+')
       .ordering(dc.pluck('key'))
-      .elasticX(true)
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
+      .elasticX(true);
   }
 }

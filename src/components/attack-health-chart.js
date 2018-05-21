@@ -1,6 +1,5 @@
 import 'd3';
 import dc from 'dc';
-import EventBus from '../utils/event-bus';
 
 export default class AttackHealthChart {
   constructor(data, parent) {
@@ -17,8 +16,7 @@ export default class AttackHealthChart {
       .x(d3.scaleLinear().domain([attackDim.bottom(1)[0].Attack - 1, attackDim.top(1)[0].Attack + 1]))
       .xAxisLabel('Attack')
       .y(d3.scaleLinear().domain([healthDim.bottom(1)[0].Health - 1, healthDim.top(1)[0].Health + 1]))
-      .yAxisLabel('Health')
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
+      .yAxisLabel('Health');
 
     attackDim.dispose();
     healthDim.dispose();

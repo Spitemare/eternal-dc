@@ -1,6 +1,5 @@
 import 'd3';
 import dc from 'dc';
-import EventBus from '../utils/event-bus';
 
 export default class TypeChart {
   constructor(data, parent) {
@@ -13,8 +12,7 @@ export default class TypeChart {
       .group(this.dim.group())
       .title(d => d.key + ': ' + d.value)
       .label(d => '')
-      .legend(this.legend)
-      .on('filtered', () => EventBus.emit('chart.filter', {...arguments}));
+      .legend(this.legend);
 
     dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => {
       return a.name.localeCompare(b.name);
