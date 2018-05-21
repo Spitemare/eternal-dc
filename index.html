@@ -4,6 +4,9 @@
         <meta charset="UTF-8" />
         <title>Eternal Dynamic Charts</title>
         <style>
+          #image-chart {
+            min-height: 330px;
+          }
           #unit-type-chart .x.axis text {
             text-anchor: end !important;
             transform: rotate(-45deg) translate(-1%, -2%);
@@ -16,6 +19,9 @@
           }
           .dc-chart {
             float: none !important;
+          }
+          .dc-chart .brush rect.selection {
+            fill-opacity: .5 !important;
           }
         </style>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.3/dc.min.css" integrity="sha256-KpMU+EtqJCR1enZLQofp/JAYFD/uua5B7fohf70JaEQ=" crossorigin="anonymous" />
@@ -39,6 +45,10 @@
         </div>
         <div class="columns">
           <div id="cost-chart" class="column"></div>
+        </div>
+        <div class="columns">
+            <div id="attack-health-chart" class="column"></div>
+        </div>
         </div>
         <div id="image-chart"></div>
       </div>

@@ -8,6 +8,7 @@ import TypeChart from './components/type-chart';
 import RarityChart from './components/rarity-chart';
 import UnitTypeChart from './components/unit-type-chart';
 import CostChart from './components/cost-chart';
+import AttackHealthChart from './components/attack-health-chart';
 import ImageChart from './components/image-chart';
 
 get('./eternal-cards.json').then(cards => {
@@ -29,6 +30,7 @@ get('./eternal-cards.json').then(cards => {
   let unitTypeChart = new UnitTypeChart(data, '#unit-type-chart');
   let costChart = new CostChart(data, '#cost-chart');
   let imageChart = new ImageChart(data, '#image-chart');
+  let attackHealthChart = new AttackHealthChart(data, '#attack-health-chart');
 
   dc.renderAll();
 });
