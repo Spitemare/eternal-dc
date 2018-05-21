@@ -16,6 +16,10 @@ export default class ImageChart {
       .order(Comparators.comparing(d => d.FactionSort.length).thenComparing('FactionSort').thenComparing('Cost').thenComparing('Name'))
       .on('renderlet', () => this.lazy.update());
 
+    this.search = dc.textFilterWidget('#search')
+      .dimension(this.dim)
+      .placeHolder('Card Name');
+
       this.lazy = new LazyLoad();
   }
 }

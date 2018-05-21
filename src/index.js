@@ -32,5 +32,12 @@ get('./eternal-cards.json').then(cards => {
   let imageChart = new ImageChart(data, '#image-chart');
   let attackHealthChart = new AttackHealthChart(data, '#attack-health-chart');
 
+  document.getElementById('reset').onclick = () => {
+    document.querySelector('#search>input').value = '';
+    dc.filterAll();
+    dc.redrawAll();
+    return false;
+  }
+
   dc.renderAll();
 });
