@@ -6,7 +6,7 @@ function sort() {
   let domain = this.chart.group().all()
     .filter(d => d.value > 0)
     .sort((a, b) => b.value - a.value)
-    .map(dc.pluck('key'));
+    .map(d => d.key);
   this.chart.x(d3.scaleBand().domain(domain));
 }
 

@@ -10,7 +10,7 @@ export default class CostChart {
       .group(this.dim.group())
       .cap(7)
       .othersLabel('7+')
-      .ordering(dc.pluck('key'))
+      .ordering(d => d.key)
       .elasticX(true);
   }
 }

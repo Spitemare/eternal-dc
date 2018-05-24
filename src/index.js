@@ -17,9 +17,7 @@ get('./eternal-cards.json').then(cards => {
   });
 
   let data = crossfilter(cards);
-  data.onChange(function(e) {
-    if (e === 'filtered') EventBus.emit('data.filtered', {...arguments});
-  });
+  data.onChange(() => EventBus.emit('data.filtered', {...arguments}));
 
   let setChart = new Charts.SetChart(data, '#set-chart');
   let factionChart = new Charts.FactionChart(data, '#faction-chart');
