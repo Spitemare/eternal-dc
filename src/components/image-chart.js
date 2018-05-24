@@ -14,11 +14,21 @@ export default class ImageChart {
       .html(d => '<img class="lazy" data-src="' + d.ImageUrl + '"></img>')
       .htmlGroup(null)
       .order(Comparators.comparing(d => d.FactionSort.length).thenComparing('FactionSort').thenComparing('Cost').thenComparing('Name'))
-      .on('renderlet', () => this.lazy.update());
+      .on('renderlet', () => {
+        this.lazy.update();
+        let grid = this.chart.selectAll('.dc-grid-top');
+        grid.classed('columns is-mobile is-multiline', true);
+        grid.selectAll('.dc-grid-item').classed('column is-one-fifth', true);
+      });
 
     this.search = dc.textFilterWidget('#search')
       .dimension(this.dim)
       .placeHolder('Card Name');
+
+    dc.override(this.search, '_doRender', () => {
+      this.search.__doRender();
+      this.search.selectAll('input').classed('input is-hovered', true);
+    });
 
       this.lazy = new LazyLoad();
   }

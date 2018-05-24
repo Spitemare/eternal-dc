@@ -5,7 +5,8 @@
         <title>Eternal Dynamic Charts</title>
         <style>
           #image-chart {
-            min-height: 330px;
+            margin: 0 auto;
+            width: 80%;
           }
           #unit-type-chart svg {
             overflow: visible;
@@ -15,10 +16,7 @@
             transform: rotate(-45deg) translate(-1%, -2%);
           }
           .dc-grid-item {
-            display: inline-block;
-            margin:0 10px 10px 0;
-            padding:5px;
-            width:200px;
+            width: 200px;
           }
           .dc-chart {
             float: none !important;
@@ -52,10 +50,11 @@
         <div class="columns">
           <div id="unit-type-chart" class="column"></div>
         </div>
-        </div>
-        <div class="columns">
-          <div id="search" class="column"></div>
-          <a id="reset">Reset</a>
+        <div class="columns is-mobile is-centered">
+          <div id="search" class="column is-narrow"></div>
+          <div class="column is-narrow">
+            <a id="reset" class="button is-primary">Reset</a>
+          </div>
         </div>
         <div id="image-chart"></div>
       </div>
