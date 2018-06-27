@@ -6,3 +6,4 @@ export {default as RarityChart} from './rarity-chart';
 export {default as SetChart} from './set-chart';
 export {default as TypeChart} from './type-chart';
 export {default as UnitTypeChart} from './unit-type-chart';
+export {default as CountChart} from './count-chart';

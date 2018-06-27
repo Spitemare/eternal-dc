@@ -26,6 +26,7 @@ get('./draft-packs.json').then(cards => {
   let costChart = new Charts.CostChart(data, '#cost-chart');
   let imageChart = new Charts.ImageChart(data, '#image-chart');
   let attackHealthChart = new Charts.AttackHealthChart(data, '#attack-health-chart');
+  let countChart = new Charts.CountChart(data, '#count-chart');
 
   document.getElementById('reset').onclick = () => {
     document.querySelector('#search>input').value = '';
