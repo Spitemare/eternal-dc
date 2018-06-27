@@ -3,8 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
-    'draft-packs': './src/draft-packs.js'
+    index: './src/index.js'
   },
   devtool: process.env.WEBPACK_SERVE ? 'inline-source-map' : false,
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
