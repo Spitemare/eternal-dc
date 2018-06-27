@@ -5,7 +5,7 @@ export default class CountChart {
     this.chart = dc.numberDisplay(parent);
 
     this.chart
-      .formatNumber(d3.format(','))
+      .formatNumber(d3.format(',.0d'))
       .html({
         one:'%number Card',
         some:'%number Cards',
