@@ -2,7 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: ['./src/index.js'],
+  entry: {
+    index: './src/index.js',
+    'draft-packs': './src/draft-packs.js'
+  },
   devtool: process.env.WEBPACK_SERVE ? 'inline-source-map' : false,
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
   module: {
@@ -31,8 +34,14 @@ module.exports = {
     })
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      name: 'common'
+    }
   },
   externals: /^(d3|dc)$/
 };

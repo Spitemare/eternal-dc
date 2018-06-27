@@ -4,7 +4,7 @@ import crossfilter from 'crossfilter2';
 import dc from 'dc';
 import * as Charts from './components/charts';
 
-get('./eternal-cards.json').then(cards => {
+get('./draft-packs.json').then(cards => {
   dc.config.defaultColors(d3.schemeCategory10);
 
   cards.forEach(card => {
