@@ -15,10 +15,10 @@ export default class ImageChart {
       .htmlGroup(null)
       .order(Comparators.comparing(d => d.FactionSort.length).thenComparing('FactionSort').thenComparing('Cost').thenComparing('Name'))
       .on('renderlet', () => {
-        this.lazy.update();
         let grid = this.chart.selectAll('.dc-grid-top');
         grid.classed('columns is-mobile is-multiline', true);
         grid.selectAll('.dc-grid-item').classed('column is-one-fifth', true);
+        this.lazy.update();
       });
 
     this.search = dc.textFilterWidget('#search')
@@ -30,6 +30,6 @@ export default class ImageChart {
       this.search.selectAll('input').classed('input is-hovered', true);
     });
 
-      this.lazy = new LazyLoad();
+    this.lazy = new LazyLoad();
   }
 }
