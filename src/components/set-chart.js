@@ -11,11 +11,12 @@ export default class SetChart {
         'The Empty Throne (Set 1)',
         'Omens of the Past (Set 2)',
         'The Dusk Road (Set 3)',
+        'Fall of Argenport (Set 4)',
         'Jekk\'s Bounty (Set 1001)',
         'The Tale of Horus Traver (Set 1002)',
         'Dead Reckoning (Set 1003)'
       ])
-      .domain([0, 1, 2, 3, 1001, 1002, 1003]);
+      .domain([0, 1, 2, 3, 4, 1001, 1002, 1003]);
     this.legend = dc.legend().legendText(d => this.titles(d.name));
 
     this.chart
