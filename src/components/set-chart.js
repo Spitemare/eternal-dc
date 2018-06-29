@@ -22,6 +22,7 @@ export default class SetChart {
     this.chart
       .dimension(this.dim)
       .group(this.dim.group())
+      .ordering(d => d.value.SetNumber)
       .title(d => this.titles(d.key) + ': ' + d.value)
       .label(d => '')
       .legend(this.legend);

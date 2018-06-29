@@ -32,7 +32,7 @@ export default class FactionChart {
       .label(d => '')
       .legend(this.legend)
       .colors(this.colors)
-      .ordering(d => d.key);
+      .ordering(d => this.legendOrdering(d.key));
 
     dc.override(this.chart, 'legendables', () => this.chart._legendables().sort((a, b) => this.legendOrdering(a.name) - this.legendOrdering(b.name)));
   }

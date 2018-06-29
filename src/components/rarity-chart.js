@@ -24,6 +24,7 @@ export default class FactionChart {
     this.chart
       .dimension(this.dim)
       .group(this.dim.group())
+      .ordering(d => this.legendOrdering(d.key))
       .title(d => d.key + ': ' + d.value)
       .label(d => '')
       .legend(dc.legend())
